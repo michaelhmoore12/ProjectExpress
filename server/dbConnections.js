@@ -7,7 +7,7 @@ db = await mysql.createConnection ( {
     host: 'localhost',
     user: 'root',
     password: 'Emilia0113!',
-    database: 'schoolDB'
+    database: 'schooldb'
     } )
     console.log ("Connected to MySQL database successfully!  :)  ")
 }

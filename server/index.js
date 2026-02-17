@@ -1,27 +1,21 @@
 import express from 'express'
 import cors from 'cors'
-import db from './dbConnections.js'
-
+import studentRouter from './Routers/studentsRouters.js'
+import coursesRouter from './Routers/coursesRouter.js'
+import userRouter from './Routers/userRouters.js'
 
 const server = express();
+server.use (express.json());
 server.use (cors("localhost://3000"));
+
+// http://localhost:4000/students/
+//http://localhost:4000/students/1
+server.use ("/students", studentsRouter)
+server.use ("/courses", coursesRouter)
+server.use ("/users", userRouter)
 
 server.get ("/", (req, res) => {
     res.send("The server is up and running")
 })
 //root
-server.get ("/students", (req, res)      => {
-req.send ("Get students sent")
-})
-//students
-server.get ("/courses", (req, res)      => {
-    res.send ("Get courses sent")
-})
-//courses
-server.post ("/students", async (req, res) => { 
-    res.send ("Post students sent")
-})
 
-server.listen(4000, () => {
-    console.log("Server is running on port 4000")
-})
